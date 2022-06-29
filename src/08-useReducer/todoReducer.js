@@ -1,8 +1,7 @@
 export const todoReducer = (state = [], action) => {
     switch (action.type) {
-        case '[TODO] Add new todo':
-                throw new Error('Nothing happening');
-            break;
+        case '[TODO] add todo':
+            return [...state, action.payload]
         default:
             return state;
     }

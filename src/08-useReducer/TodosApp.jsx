@@ -1,4 +1,7 @@
 import { useReducer } from "react";
+import { AddTodo } from "./AddTodo";
+import { TodoItem } from "./TodoItem";
+import { TodoList } from "./TodoList";
 import { todoReducer } from "./todoReducer";
 
 const initialState = [
@@ -14,8 +17,18 @@ const initialState = [
   },
 ];
 
+
+
 export const TodosApp = () => {
   const [todos, todosDispatch] = useReducer(todoReducer, initialState);
+
+  const handleNewTodo = (todo) => {
+    const action = {
+      type: '[TODO] add todo',
+      payload: todo
+    } 
+    todosDispatch(action);
+  }
 
   return (
     <>
@@ -23,23 +36,10 @@ export const TodosApp = () => {
       <hr />
       <div className="row">
         <div className="col-7">
-          <ul className="list-group">
-          {todos.map((todo) =>(
-            <li key={todo.id}className="list-group-item d-flex justify-content-between mt-3">
-            <span className="align-self-center">Item 1</span>
-            <button className="btn btn-danger">Delete</button>
-            </li>
-          ))}
-          </ul>
+          <TodoList todos={todos} />
         </div>
         <div className="col-5">
-            <input 
-            type="text"
-            className="form-control"
-            placeholder="Enter new TODO"
-            
-            />
-            <button className="btn btn-outline-primary mt-1" type="submit">Add</button>
+          <AddTodo onNewTodo={handleNewTodo}/>
         </div>
       </div>
     </>
