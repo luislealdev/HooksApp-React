@@ -5,11 +5,19 @@ import { TodoList } from "./TodoList";
 
 export const TodosApp = () => {
 
-  const {todos, handleNewTodo, handleDeleteTodo, handleToggleTodo} = useTodos([]);
+  const {todos, pending, complete, handleNewTodo, handleDeleteTodo, handleToggleTodo} = useTodos([]);
 
   return (
     <>
-      <h1>TODOS App</h1>
+      <div className="row">
+        <div className="col-7">
+        <h1>TODOS App</h1>
+        </div>
+        <div className="col-5">
+        <h6>Pending: {pending}</h6>
+      <h6>Complete: {complete}</h6>
+        </div>
+      </div>
       <hr />
       <div className="row">
         <div className="col-7">
@@ -17,7 +25,7 @@ export const TodosApp = () => {
         </div>
         <div className="col-5">
           <AddTodo onNewTodo={handleNewTodo}/>
-        </div>
+        </div>  
       </div>
     </>
   );

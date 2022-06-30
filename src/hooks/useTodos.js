@@ -39,6 +39,8 @@ export const useTodos = (initialConfig) => {
 
   return {
     todos,
+    pending: (todos.filter(todo => !todo.done)).length,
+    complete: (todos.filter(todo => todo.done)).length,
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo,
