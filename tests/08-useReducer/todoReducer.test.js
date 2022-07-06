@@ -33,11 +33,12 @@ describe('Tests in todoReducer', () => {
       })
 
     test('should delete a todo', () => { 
-        const state = todoReducer(initialState, {type:'[TODO] delete todo', payload:'1'});
+        const state = todoReducer(initialState, {type:'[TODO] delete todo', payload:1});
         expect(state.length).toBe(0);
      });
 
      test('should test the toggle of the todo', () => { 
-        
-      })
+        const state = todoReducer(initialState, {type:'[TODO] toggle todo', payload:1});
+        expect(state[0].done).toBeTruthy();
+      });
  })
