@@ -13,7 +13,6 @@ describe("Tests in <HomePage/> using useContext", () => {
     );
 
     const pre = screen.getByLabelText("pre");
-    console.log(pre.innerHTML);
     expect(pre.innerHTML).toBe("null");
   });
 
